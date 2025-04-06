@@ -8,195 +8,233 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="font-sans antialiased bg-white">
+<body class="font-sans antialiased bg-white dark:bg-gray-900 transition-colors duration-300">
     <!-- Header -->
-    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+    <header class="fixed w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md z-50">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="/" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300">Calgary<span class="text-gray-800">Plumbing</span></a>
+                <a href="/" class="text-2xl font-bold text-primary dark:text-white hover:text-secondary dark:hover:text-gray-300 transition-colors duration-300">Calgary<span class="text-gray-800 dark:text-gray-200">Plumbing</span></a>
                 
                 <button class="mobile-menu-button md:hidden" aria-label="Toggle Menu">
-                    <i class="fas fa-bars text-2xl text-gray-600 hover:text-blue-600 transition-colors duration-300"></i>
+                    <i class="fas fa-bars text-2xl text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300"></i>
                 </button>
 
                 <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Services</a>
-                    <a href="#benefits" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Benefits</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">Testimonials</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">About</a>
-                    <a href="#faq" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">FAQ</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">Contact Us</a>
+                    <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300">Services</a>
+                    <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300">Pricing</a>
+                    <a href="#resources" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300">Resources</a>
+                    <a href="#community" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300">Community</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">Contact Us</a>
+                    <button id="theme-toggle" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- Mobile Menu -->
-            <div class="mobile-menu hidden md:hidden mt-4 bg-white rounded-lg shadow-lg absolute left-0 right-0 p-4">
+            <div class="mobile-menu hidden md:hidden mt-4 bg-white dark:bg-gray-900 rounded-lg shadow-lg absolute left-0 right-0 p-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Services</a>
-                    <a href="#benefits" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Benefits</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">Testimonials</a>
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">About</a>
-                    <a href="#faq" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2">FAQ</a>
-                    <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-all duration-300 text-center">Contact Us</a>
+                    <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300 py-2">Services</a>
+                    <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300 py-2">Pricing</a>
+                    <a href="#resources" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300 py-2">Resources</a>
+                    <a href="#community" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300 py-2">Community</a>
+                    <a href="#contact" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition-all duration-300 text-center">Contact Us</a>
+                    <button id="mobile-theme-toggle" class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors duration-300 py-2">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-24 bg-gradient-to-br from-blue-50 to-white">
+    <section class="pt-32 pb-24 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
                         Expert Plumbing Solutions for Calgary Homes & Businesses
                     </h1>
-                    <p class="text-xl text-gray-600 mb-8">Licensed professionals delivering reliable, same-day service with upfront pricing and a 100% satisfaction guarantee.</p>
-                    <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                        Get Free Estimate
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Licensed professionals delivering reliable, same-day service with upfront pricing and a 100% satisfaction guarantee.</p>
+                    <a href="#booking" class="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Book a Service
                     </a>
                 </div>
                 <div class="relative" data-aos="fade-left">
                     <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189" alt="Professional plumber at work" class="rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                        <p class="text-blue-600 font-bold">24/7 Emergency Response</p>
-                        <p class="text-gray-600">30-Minute Average Arrival Time</p>
+                    <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        <p class="text-primary dark:text-white font-bold">24/7 Emergency Response</p>
+                        <p class="text-gray-600 dark:text-gray-300">30-Minute Average Arrival Time</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-gray-50">
+    <!-- Service Booking Section -->
+    <section id="booking" class="py-24 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">About Calgary Plumbing</h2>
-            <div class="max-w-4xl mx-auto space-y-8 text-lg text-gray-600">
-                <p data-aos="fade-up">
-                    Founded in 1995, Calgary Plumbing has grown from a small family business to Calgary's most trusted plumbing service provider. Our journey began with a simple mission: to provide honest, reliable plumbing services at fair prices.
-                </p>
-                <p data-aos="fade-up" data-aos-delay="100">
-                    Our core values of integrity, excellence, and customer satisfaction drive everything we do. We believe in transparent pricing, ongoing technical training for our team, and using the highest quality materials and equipment.
-                </p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">Book a Service</h2>
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="service-type" class="block text-gray-700 dark:text-gray-300 mb-2">Service Type</label>
+                            <select id="service-type" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary">
+                                <option value="emergency">Emergency Service</option>
+                                <option value="maintenance">Regular Maintenance</option>
+                                <option value="installation">Installation</option>
+                                <option value="repair">Repair</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="preferred-date" class="block text-gray-700 dark:text-gray-300 mb-2">Preferred Date</label>
+                            <input type="date" id="preferred-date" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="contact-info" class="block text-gray-700 dark:text-gray-300 mb-2">Contact Information</label>
+                        <input type="tel" id="contact-info" placeholder="Phone Number" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Additional Details</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Schedule Service
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="py-24 bg-white">
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Calgary Plumbing?</h2>
-                <p class="text-xl text-gray-600">Experience the difference of working with Calgary's most trusted plumbing professionals</p>
-            </div>
-            
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">Transparent Pricing</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-check-circle text-3xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Expert Solutions</h3>
-                    <p class="text-gray-600">Our licensed technicians have over 25 years of experience handling everything from routine maintenance to complex repairs.</p>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Emergency Services</h3>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li class="flex justify-between">
+                            <span>Emergency Response</span>
+                            <span>$150</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>After Hours Service</span>
+                            <span>+$50</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Guaranteed Service</h3>
-                    <p class="text-gray-600">We stand behind our work with a 100% satisfaction guarantee and up to 10-year warranties on installations.</p>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Regular Services</h3>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li class="flex justify-between">
+                            <span>Basic Inspection</span>
+                            <span>$89</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Standard Repair</span>
+                            <span>From $120</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-tag text-3xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Transparent Pricing</h3>
-                    <p class="text-gray-600">Get upfront, flat-rate pricing with no hidden fees or overtime charges. Senior and military discounts available.</p>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Installation</h3>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li class="flex justify-between">
+                            <span>Fixture Installation</span>
+                            <span>From $200</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>System Upgrade</span>
+                            <span>Quote Required</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 bg-gray-50">
+    <!-- Resources Section -->
+    <section id="resources" class="py-24 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">What Our Customers Say</h2>
-            
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">Educational Resources</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up">
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6">"Called Calgary Plumbing for an emergency pipe burst at 2 AM. Their technician arrived within 30 minutes and fixed the issue professionally."</p>
-                    <div class="flex items-center">
-                        <div>
-                            <p class="font-semibold text-gray-900">Sarah Thompson</p>
-                            <p class="text-gray-500">Homeowner in Bridgeland</p>
-                        </div>
-                    </div>
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Plumbing Tips & Guides</h3>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Basic Plumbing Maintenance</a></li>
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Emergency Preparedness</a></li>
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Water Conservation Tips</a></li>
+                    </ul>
                 </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6">"As a property manager, I've worked with many plumbing companies. Calgary Plumbing stands out for their reliability and expertise."</p>
-                    <div class="flex items-center">
-                        <div>
-                            <p class="font-semibold text-gray-900">Michael Chen</p>
-                            <p class="text-gray-500">Property Manager, Urban Living Calgary</p>
-                        </div>
-                    </div>
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Industry Insights</h3>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Latest Plumbing Technologies</a></li>
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Energy Efficiency Guide</a></li>
+                        <li><a href="#" class="hover:text-primary dark:hover:text-white transition-colors duration-300">Seasonal Maintenance Tips</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-white">
+    <!-- Community Section -->
+    <section id="community" class="py-24 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Frequently Asked Questions</h2>
-            
-            <div class="max-w-3xl mx-auto space-y-6">
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-101">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">What areas do you service in Calgary?</h3>
-                    <p class="text-gray-600">We provide comprehensive plumbing services throughout Calgary and surrounding areas, including Airdrie, Cochrane, Chestermere, and Okotoks.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">Community Engagement</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Local Initiatives</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">We're proud to support local community projects and environmental sustainability efforts in Calgary.</p>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <li>• Water Conservation Programs</li>
+                        <li>• Community Education Workshops</li>
+                        <li>• Local Charity Support</li>
+                    </ul>
                 </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-101">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">What are your payment options?</h3>
-                    <p class="text-gray-600">We accept all major credit cards, debit, e-transfer, and cash. For larger projects, we offer flexible financing options with approved credit.</p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-101">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Do you offer emergency services?</h3>
-                    <p class="text-gray-600">Yes, we provide 24/7 emergency plumbing services with no overtime charges. Our emergency response team typically arrives within 30 minutes.</p>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Success Stories</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-primary pl-4">
+                            <p class="text-gray-600 dark:text-gray-300">"Calgary Plumbing's community initiatives have made a significant impact on local water conservation efforts."</p>
+                            <p class="text-gray-900 dark:text-white font-semibold mt-2">- Calgary Environmental Committee</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-blue-600 relative">
+    <!-- Customer Support Section -->
+    <section id="contact" class="py-24 bg-primary relative">
         <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1')"></div>
         <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Ready for Professional Plumbing Service?</h2>
-            <p class="text-xl text-blue-100 mb-8">Schedule your service today and experience the Calgary Plumbing difference</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Need Assistance?</h2>
+            <p class="text-xl text-blue-100 mb-8">Our customer support team is here to help 24/7</p>
             <div class="space-x-4">
-                <a href="#contact" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Get Free Estimate
-                </a>
-                <a href="tel:+1234567890" class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105">
+                <button class="inline-block bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg" onclick="openLiveChat()">
+                    Start Live Chat
+                </button>
+                <a href="tel:+1234567890" class="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
                     Call Now
                 </a>
             </div>
@@ -259,6 +297,18 @@
             once: true
         });
 
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Mobile Menu
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.querySelector('header nav .mobile-menu-button');
             const mobileMenu = document.querySelector('header nav .mobile-menu');
@@ -286,6 +336,12 @@
                 });
             }
         });
+
+        // Live Chat Function
+        function openLiveChat() {
+            // Implement live chat functionality here
+            alert('Live chat feature coming soon!');
+        }
     </script>
 </body>
 </html>
